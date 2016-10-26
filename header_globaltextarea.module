@@ -1,9 +1,10 @@
 <?php 
 
 /**
- * Implements hook_views_post_execute().
+ * Implements hook_views_pre_view().
  */
-function header_globaltextarea_views_post_execute(&$view) {
+function header_globaltextarea_views_pre_view($view, &$display_id, &$args) {
+
   switch ($view->name) {
 
     case 'my_view_name':
