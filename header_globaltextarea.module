@@ -1,0 +1,19 @@
+<?php 
+
+/**
+ * Implements hook_views_post_execute(
+ */
+function header_globaltextarea_views_post_execute(&$view) {
+  switch ($view->name) {
+
+    case 'my_view_name':
+      if (isset($view->header['area']->options['content'])
+        && $view->current_display == 'my_view_display') {
+
+        $view->header['area']->options['content'] =  'Insert here your html markup';
+      }
+
+      break;
+
+  }
+}
