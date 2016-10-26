@@ -7,12 +7,17 @@ function header_globaltextarea_views_post_execute(&$view) {
   switch ($view->name) {
 
     case 'my_view_name':
-      if (isset($view->header['area']->options['content'])
-        && $view->current_display == 'my_view_display') {
-
-        $view->header['area']->options['content'] =  'Insert here your html markup';
-      }
-
+      $header_options = array(
+        'label' => t('Header text'), // Administrative label. Not really needed here.
+        'content' => 'This is the header text content.', // Content of header text.
+        'format' => 'filtered_html', // Format of header text.
+        'empty' => 1, // Show even when there are no results. Set to zero otherwise.
+      );
+      // This adds a header handler for a text area. The table is views because it is not
+      // a database field. The field is area because it is a text area.
+      // The header_options are the settings.
+      $view->add_item('DISPLAY_NAME', 'header', 'views', 'area', $header_options);
+      
       break;
 
   }
