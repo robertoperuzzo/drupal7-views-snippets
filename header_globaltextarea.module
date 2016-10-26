@@ -1,7 +1,7 @@
 <?php 
 
 /**
- * Implements hook_views_post_execute(
+ * Implements hook_views_post_execute().
  */
 function header_globaltextarea_views_post_execute(&$view) {
   switch ($view->name) {
