@@ -15,7 +15,7 @@ function header_globalview_views_pre_view($view, &$display_id, &$args) {
         'table' => 'views',
         'field' => 'view',
         'label' => 'Your label',
-        'view_to_insert' => 'my_view_machine_name:display_name',
+        'view_to_insert' => 'view_machine_name_to_insert:display_name',
         'inherit_arguments' => TRUE, // It inherits parent's arguments.
         'arguments' => FALSE,
         );
