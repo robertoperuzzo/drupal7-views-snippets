@@ -7,7 +7,7 @@ function header_globaltextarea_views_pre_view($view, &$display_id, &$args) {
 
   switch ($view->name) {
 
-    case 'my_view_name':
+    case 'my_view_machine_name':
       $header_options = array(
         'label' => t('Header text'), // Administrative label. Not really needed here.
         'content' => 'This is the header text content.', // Content of header text.
