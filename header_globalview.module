@@ -1,0 +1,28 @@
+<?php 
+
+/**
+ * Implements hook_views_pre_view().
+ */
+function header_globalview_views_pre_view($view, &$display_id, &$args) {
+
+  switch ($view->name) {
+
+    case 'my_view_machine_name':
+      
+      // Add the sub-categories menu in view header.
+      $header_options = array(
+        'id' => 'view',
+        'table' => 'views',
+        'field' => 'view',
+        'label' => 'Your label',
+        'view_to_insert' => 'my_view_machine_name:display_name',
+        'inherit_arguments' => TRUE, // It inherits parent's arguments.
+        'arguments' => FALSE,
+        );
+
+      $view->add_item('page', 'header', 'views', 'view', $header_options);
+      
+      break;
+
+  }
+}
