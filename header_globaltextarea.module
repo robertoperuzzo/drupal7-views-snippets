@@ -3,7 +3,7 @@
 /**
  * Implements hook_views_pre_view().
  */
-function header_globaltextarea_views_pre_view($view, &$display_id, &$args) {
+function header_globaltextarea_views_pre_view(&$view, &$display_id, &$args) {
 
   switch ($view->name) {
 
