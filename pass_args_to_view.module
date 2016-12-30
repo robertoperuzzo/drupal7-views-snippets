@@ -1,0 +1,42 @@
+<?php
+
+
+/**
+ * Implements hook_views_pre_view().
+ */
+function ael_custom_views_pre_view(&$view, &$display_id, &$args) {
+
+  switch ($view->name) {
+
+    case 'prodotti_correlati':
+      // Load current object.
+      $node = menu_get_object();
+
+      // Set arguments if this view will be executed inside a product page.
+      if ($node->type == 'prodotto') {
+        // Prepare view arguments.
+        // Gets brand nid.
+        $items = field_get_items('node', $node, 'field_brand');
+        if ($items) {
+          $item = reset($items);
+          $brand_id = $item['target_id'];
+        }
+        // Get tags.
+        $items = field_get_items('node', $node, 'field_tags');
+        $tids = array();
+        $tags = '';
+        if ($items) {
+          foreach ($items as $item) {
+            array_push($tids, $item['tid']);
+          }
+          $tags = implode('+', $tids);
+        }
+
+        $args = array($brand_id, $tags);
+      }
+
+      break;
+
+  }
+
+}
